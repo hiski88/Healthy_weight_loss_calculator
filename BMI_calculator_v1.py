@@ -90,7 +90,7 @@ def main():
         with col1: user_weight = float(st.number_input(label='Weight in Kilograms', min_value=0.0,max_value=180.0, step=0.1,help ="Example: 100.5", format="%.1f"))
         with col2: user_height = float(st.number_input(label='Height in Meters', value=1.75,min_value=0.5,max_value=2.5, step=0.01,help ="Example: 1.80", format="%.2f"))
         col3, col4 = st.columns(2)
-        with col3: user_num_weeks = st.number_input(label='Enter the week length to calculate:',min_value=1,max_value=400, value=13, step=1, help ="Example: 13")
+        with col3: user_num_weeks = st.number_input(label='Enter the number of weeks to calculate:',min_value=1,max_value=400, value=13, step=1, help ="Example: 13")
         with col4: start_day= st.date_input("Starting Date", min_value=None, max_value=None, key=None, help='Default=Today. Otherwise: enter the exact day that you have started your weight loss program')
         
         submit_button= st.button("Submit")
@@ -115,9 +115,9 @@ def main():
 
                 #Plotly figures (weight and BMI)
                 fig = px.line(df_weight, x="Date", y="value", color="variable", line_dash ="variable", symbol ="variable", title="Weight loss per week", labels={"value": "Weight [Kg]", "variable": "% of Weight decrease"})
-                fig.update_layout(font_color="blue", title_font_color="blue", legend_title_font_color="blue",title_font_size=22, font_size=16)
+                fig.update_layout(font_color="blue", title_font_color="blue", legend_title_font_color="blue",title_font_size=22, font_size=18)
                 fig2= px.line(df_bmi, x="Date", y="value", color="variable", line_dash ="variable", symbol ="variable", title="BMI change per week", labels={"value": "BMI [Kg/m^2]", "variable": "% of Weight decrease"})                
-                fig2.update_layout(font_color="blue", title_font_color="blue", legend_title_font_color="blue", title_font_size=22, font_size=16, yaxis_title='BMI [Kg/m<sup>2</sup>]')
+                fig2.update_layout(font_color="blue", title_font_color="blue", legend_title_font_color="blue", title_font_size=22, font_size=18, yaxis_title='BMI [Kg/m<sup>2</sup>]')
                 #adding BMI info:
                 fig2.add_hrect(y0=18.5, y1=25, line_width=0, fillcolor="green", opacity=0.4, annotation_text="Normal Weight",annotation_position="top left")
                 fig2.add_hrect(y0=30, y1=40, line_width=0, fillcolor="red", opacity=0.4, annotation_text="Obesity",annotation_position="top left")
